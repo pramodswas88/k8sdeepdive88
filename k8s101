@@ -1,57 +1,48 @@
+Kubernetes Components :
+
+Control plane(masternode)
+-apiserver
+-ETCD
+-Scheduler
+-Control Manager
+
+Nodes(workernode)
+-Kubelet
+-Kube-proxy
+-Container runtime
+
+Control Plane Components (masternode)
+
+1.Kube-apiserver
+    Api’s controls application, kubernetes controls apis.
+2.Etcd
+    It is storage for kubernetes
+3.Kube-scheduler
+    Its a scheduler, which schedules everting in nodes
+4.Kube-controller-manager
+    Some types of these controllers are:
+    Node controller: Responsible for noticing and responding when nodes go down.
+    Job controller: Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
+    EndpointSlice controller: Populates EndpointSlice objects (to provide a link between Services and Pods)
+
+Node Components (workernode)
+1.kubelet 
+2.kube-proxy
+3.Container runtime
 
 
-Kubernetes Components
-Control plane
-Nodes
-apiserver
-
-Kubelet
-ETCD
-Kube-proxy
-Scheduler
-Container runtime
-Control Manager
-
-
-Control Plane Components
-
-Kube-apiserver
-Api’s controls application, kubernetes controls apis.
-Etcd
-It is storage for kubernetes
-Kube-scheduler
-Its a scheduler, which schedules everting in nodes
-Kube-controller-manager
-Some types of these controllers are:
-Node controller: Responsible for noticing and responding when nodes go down.
-Job controller: Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
-EndpointSlice controller: Populates EndpointSlice objects (to provide a link between Services and Pods)
-
-Node Components 
-kubelet 
-
-
-kube-proxy
-Container runtime
-
-
-Kubernetes Components
-
-
-pods
-Replicaset
-Service
-volumes
-namespace
-Config maps/Secrets
-Statefull sets
-Daemonsets
-
-
-
+Kubernetes Objects
+1.pods
+2.Replicaset
+3.Services(clusterIP(internal expose intranet), Nodeport(public:port to expose), loadbalancer)
+4.volumes
+5.namespace
+6.Config maps/Secrets
+7.Statefull sets
+8.Daemonsets
 
 Kubernetes Objects:
-The Kubernetes Platform contains control over the resources related to Storage and Compute. These resources are regarded as Objects, and it contains 8 Key objects.
+    The Kubernetes Platform contains control over the resources related to Storage and Compute. These resources are regarded as Objects, and it contains 8 Key objects.
 
 1. Pods: (to run single or multiple containers in a wrapper)
 
@@ -60,9 +51,6 @@ Being a higher-level abstraction grouping containerized component, it consists o
 2. Replica Sets: (number of pods to be run at a time)(duplicates)
 
 At any time, it is needed to maintain a stable set of running replica Pods. This is maintained by Replica sets. Also, its purpose is to manage the availability of the required number of identical Pods.
-
-
-
 
 3. Services: (to access the pods using url or IP Address) (to expose the application)
 
@@ -76,22 +64,20 @@ By default, ephemeral storage will be provided by the File Systems of Kubernetes
 
 The large number of resources managed by Kubernetes are separated into multiple non-overlapping sets. These sets are referred to as Namespaces. These are generally used when a large number of users exist in the form of multiple teams or projects.
 
-6. ConfigMaps and Secrets: (1. passing variables to in text format is configmaps 
-2. passing variables in encrypted text is secrets)
-
-Some of the Configuration Data may contain confidential information which makes the storage and maintenance of configuration information a challenge. ConfigMaps and Secrets are two mechanisms provided by Kubernetes that can deal with this problem. Both methods permit changes in the configuration without application-build.
+6. ConfigMaps and Secrets: (1. passing variables to in text format is configmaps 2. passing variables in encrypted text is secrets)
+     Some of the Configuration Data may contain confidential information which makes the storage and maintenance of configuration information a challenge. 
+     ConfigMaps and Secrets are two mechanisms provided by Kubernetes that can deal with this problem. 
+     Both methods permit changes in the configuration without application-build.
 
 7. Stateful Sets: (running the pods with same name)(when pod restarted are deleted it will create pod with different name, to avoid that we have to create stateful sets)
-
-Stateless applications are easier to handle in terms of scaling. Because all it needs is to add up the number of Pods. But for Stateful workloads, you need to maintain the states when the Pod is restarted, and the state may need to be redistributed for scaling. The stateful sets provided by Kubernetes are used to run stateful Applications ensuring uniqueness and ordering of the instances of a Pod.
+     Stateless applications are easier to handle in terms of scaling. Because all it needs is to add up the number of Pods. 
+     But for Stateful workloads, you need to maintain the states when the Pod is restarted, and the state may need to be redistributed for scaling. 
+     The stateful sets provided by Kubernetes are used to run stateful Applications ensuring uniqueness and ordering of the instances of a Pod.
 
 8. Daemon Sets: (it will create 1 pod in all nodes)
-
-Generally, Kubernetes Scheduler is responsible for deciding the location where Pods are run. It is done by the algorithm. This mode of scheduling the Pods is implemented by the feature called Daemon Sets.
- 
-
-
-The kubelet uses readiness probes to know when a container is ready to start accepting traffic
+     Generally, Kubernetes Scheduler is responsible for deciding the location where Pods are run. 
+     It is done by the algorithm. This mode of scheduling the Pods is implemented by the feature called Daemon Sets.
+     The kubelet uses readiness probes to know when a container is ready to start accepting traffic
 
 
 
