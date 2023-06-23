@@ -1,0 +1,288 @@
+kubernates & interview quetions:
+--------------------------------
+--------------------------------
+
+cluster
+	group of nodes
+
+node
+	a machinne like VM
+	
+pod
+	group of containers / deployment unit / unmanaged
+	
+container
+	application
+
+service ( n/w object )
+	entry point to access pods
+		clusterip ( default ) to expose within the cluster
+		node port
+		lb --- out side access
+	
+ingress  ( n/w object )
+	to execute outside 
+
+deployment mostly use
+	managed 
+	replicas ( like a auto scalling )
+	
+difference b/w pod and deployment
+	pod is unmaged
+	deployment is a managed
+	
+daemonset
+	each node one pod will run like monitering / logging agents 
+
+replica controller
+	old one and equality based selector
+
+replica set
+	new and set based selector
+	
+statefull set
+	to save container data (apps)
+
+name space
+	to deploy pods at specific name
+
+configmap
+	plain text used to pass env variables
+
+secrets
+	encrypt text used to pass env variables
+
+node selector
+	specifies a map of key-value pair
+
+node affinity
+	to deploy particular pod in specific node
+
+taint
+	you did't deploy pods or anything {by default in master}
+
+selector
+	mapping service and deployment file
+	
+backend service
+	mapping ingress and deployment file
+	
+static pod's
+	by default inbuilt pods 
+
+-------------------
+new project setup
+-------------------
+
+1. namespace
+2. ingress.yaml ( hostbased )
+3. service.yaml ( path based )
+4. deployment.yaml ( ecr url ) [ mandotry is selector and backend files ] 
+5. nginx -- ingresscontroller.yaml
+
+--------------------
+yaml file
+--------------------
+apliversion:
+kind:
+metadata:
+spec:(host based(ingress.yaml) / path based rules(service.yaml))
+	host:
+	port:
+	image:
+	type:
+
+--------------------
+--------------------
+
+what is the pod and cotainer
+	pod : pod is one of the deployment service and pod is unmanged, Group of containers
+	container : running component, we can build the docker image it creates the container
+	
+different types of services in k8
+	cluster Ip
+	node ip/port
+	load balencer
+
+one pod is running can you add the another port on the port
+	yes it is possible but stop the pod and add the port
+	
+what is inbuilt controller in kubernates
+	api server
+	scheduler
+	controller
+	etcd
+
+what are the different files we deploying the kubernates
+	service file
+	ingress file
+	deploying file
+	
+what are the inbuilt controller
+	pod respond and pod is alive its checks
+
+how to check a log in pod
+	kubectl logs podId/podName --namespace
+
+we have multiple namespaces in a pod how we access a specific pod
+	kubectl get pods  podId/podName --namespace
+	
+different b/w kubelet and kubeproxy
+	kubelet is the agent and each pod runs on the each node
+	kubeproxy allows the out side taffic to internet
+	
+different b/w replication set and replica controller
+	replica controler old one equality vased service it works
+	replication set new and it works an set based selector 
+
+what is the deployment in kubernates respective to pod
+	pod is manged and deployment is unmanaged
+
+rolling update and deployment files in all
+	rolling update is a deployment starategy 
+
+different b/w horizantal and vertical scaling
+	
+
+what is etcd
+	etcd is the keystore data like database
+	all pods clusters contaiers secrets all data stored in the etcd
+
+ec2 healthcheck
+	system & instance
+	
+	
+kubernates
+----------
+api : api is a autherisation purpose to communicate
+scheduler: if we have any deply in any pod in node kubectl command its ask to scheduler 
+
+master and worker
+	A Pod always runs on a Node. A Node is a worker machine in Kubernetes and may be either a virtual or a physical machine, 
+	depending on the cluster. Each Node is managed by the Master. A Node can have multiple pods, 
+	and the Kubernetes master automatically handles scheduling the pods across the Nodes in the cluster.
+
+maven repositories
+	local repositories
+	central repositories
+	remote repositories
+
+pom file
+	gropu id
+	artifactory id
+	versioning
+	
+ant vs maven
+	ant is tool and maven is frame work
+	maven folows structure and ant not folows struceture
+	maven hav in built in life cycle and ant doesn't have
+
+maven plugins
+	maven compiler plugins
+	maven jar plugins
+
+maven dependencies
+	use to compile to code
+	
+maven important files
+	pom.xml
+	setting.xml
+		procy configuration	
+		local configuration
+		remote configuration
+		central configuration
+		
+builtin life cycle
+	clean
+	site
+	default / build
+		code
+		compile
+		validate
+		package
+		deploy
+		
+versions 
+	kubernates : 1.18
+	jenkins : 
+	java : 11x
+	tomcat : 9x
+	ansible : 2x
+	helm : 3x
+		
+how may process id are running command
+	Pstress -p
+
+to search a word in a file command
+	grep "word" filename
+
+how to nullify a file 
+	>filename
+	
+how we check a processID running or not
+	netstat -anlp | grep processID
+
+how we check top 10 lines in a file
+	head filename
+
+how we check last 10 lines in a file
+	tail filename
+
+what is hyperviser
+	hypervisr is a runs the multiple OS in one hardware
+
+check the disk utilisation 
+	du -h   (h -- human readable )
+
+check the disk file utilisation
+	df
+	
+difrenece b/w find and grep
+	grep is particular process will be check
+	find is to search anything
+
+permissions to files and directories
+	files : 666 ( owner -- group -- others )
+	directories : 777 ( owner -- group -- others )
+
+difrenece b/w alb and nlb
+	alb request header visible , slow
+	nlb request header not visible , fast
+	
+s3 types and polices
+s3 descriptive
+s3 statndard
+s3 encrypt and decrypt
+
+maven execute how you do you in jenkins
+	mvn in bin using the pom.xml
+
+maven goals are 3 
+	
+jenkins environment pipeline
+
+jenkins freesyle steps
+
+jenkins code stores in
+	workspace and also 
+
+ansible inventory file
+	nothing but group of server ip's
+	
+what is ansible role
+	 roles are organised by 
+	 
+adhoc are using for
+	single command execution
+
+git rebase
+	Rebasing is the process of moving or combining a sequence of commits to a new base commit
+
+revest & rebase difrenece
+	revert : If you have already pushed your branch somewhere or someone pulled from you, your only option is to git revert
+	
+	command : git revert $COMMIT...
+	
+	rebase : You use it when you want to copy or "move" some commits from one commit that they are based on, to be based on another commit (another base), hence "rebase"
+	
+	command : git rebase interactive
